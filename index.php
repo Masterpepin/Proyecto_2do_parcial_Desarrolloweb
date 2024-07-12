@@ -12,6 +12,38 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
+// Obtener opciones para los filtros
+$columns = [
+  'transportes' => 'transporte',
+  'relacion' => 'relacion',
+  'motivo' => 'motivos',
+  'paises' => 'pais',
+  'gentilicio' => 'pais',
+  'idioma' => 'lenguaje',
+  'rango' => 'frec_visita',
+  'estados' => 'estado',
+  'medio' => 'comunicacion',
+  'grado' => 'escolaridad',
+  'edad' => 'visitas' // Especial, ya que edad está en la tabla visitas
+];
+
+$options = [];
+
+// Consulta SQL para obtener las opciones de cada filtro
+foreach ($columns as $column => $table) {
+    $sql = "SELECT DISTINCT $column FROM $table";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $options[$column][] = $row[$column];
+        }
+    } else {
+        // Si no hay opciones, puedes manejarlo como prefieras
+        $options[$column] = [];
+    }
+}
+
 // Consulta SQL para obtener datos de la tabla visitas con los nombres correspondientes
 $sql = "SELECT 
             visitas.estado,
@@ -32,17 +64,17 @@ $sql = "SELECT
             visitas.tamaño_grupo,
             visitas.menores_grupo,
             visitas.duracion,
-            estado.Nombre AS estado_nombre,
-            pais.Nombre AS pais_nombre,
+            estado.estados AS estado_nombre,
+            pais.paises AS pais_nombre,
             pais.Gentilicio AS pais_gentilicio,
             escolaridad.Grado AS escolaridad_nombre,
             frec_visita.Rango AS frec_visita_nombre,
-            lenguaje1.Nombre AS primera_leng_nombre,
-            lenguaje2.Nombre AS segunda_leng_nombre,
+            lenguaje1.idioma AS primera_leng_nombre,
+            lenguaje2.idioma AS segunda_leng_nombre,
             comunicacion.Medio AS medio_com_nombre,
             motivos.Motivo AS motivo_nombre,
-            transporte.Nombre AS medio_transporte_nombre,
-            relacion.Nombre AS relacion_nombre
+            transporte.transportes AS medio_transporte_nombre,
+            relacion.relacion AS relacion_nombre
         FROM visitas
         LEFT JOIN estado ON visitas.estado = estado.ID
         LEFT JOIN pais ON visitas.residencia = pais.ID
@@ -91,84 +123,17 @@ $num_rows = $result->num_rows;
                     </div>
                 </div>
                 <div class="row mt-3" id="filters">
-                    <div class="col-md-4">
-                      <label>Medio de transporte</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 1</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Tipo de grupo</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 2</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                      <label for="pais">Motivo de visita</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mt-3" id="filters">
-                    <div class="col-md-4">
-                      <label>País de residencia</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 4</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Nacionalidad</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 5</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Lenguaje</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 6</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mt-3" id="filters">
-                    <div class="col-md-4">
-                      <label>Frecuencia de visita</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 7</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Estado</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 8</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Medio de Comunicación</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 9</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mt-3" id="filters">
-                    <div class="col-md-4">
-                      <label>Grado max. estudios</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 10</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Estado escolar</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 11</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Edad</label>
-                        <select class="form-select custom-select">
-                            <option value="">Filtro 12</option>
-                        </select>
-                    </div>
+                    <?php foreach ($columns as $column => $table): ?>
+                        <div class="col-md-4">
+                            <label for="<?= $column ?>"><?= ucfirst(str_replace('_', ' ', $column)) ?></label>
+                            <select name="<?= $column ?>" class="form-select custom-select">
+                                <option value="">Seleccione una opción</option>
+                                <?php foreach ($options[$column] as $option): ?>
+                                    <option value="<?= $option ?>"><?= $option ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
