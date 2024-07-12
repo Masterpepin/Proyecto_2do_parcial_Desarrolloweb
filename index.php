@@ -152,36 +152,36 @@ $num_rows = $result->num_rows;
             </div>
         </div>
         <div class="container mt-3 alert-container">
-            <div class="alert custom-alert" role="alert">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="alert-section custom-alert-sections">
-                            <div class="alert-text custom-alert-text-margin"> <?php echo $num_rows; ?> Visitas</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="alert-section custom-alert-sections">
-                            <div class="alert-text custom-alert-text-margin">No. Nacionales</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="alert-section custom-alert-sections">
-                            <div class="alert-text custom-alert-text-margin">No. Extranjeros</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="alert-section custom-alert-sections">
-                            <div class="alert-text custom-alert-text-margin">Primera lengua</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="alert-section custom-alert-sections">
-                            <div class="alert-text custom-alert-text-margin">Segunda lengua</div>
-                        </div>
-                    </div>
+    <div class="alert custom-alert" role="alert">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="alert-section custom-alert-sections">
+                    <div class="alert-text custom-alert-text-margin"><strong id="total-visitas">0</strong><br>Visitas</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="alert-section custom-alert-sections">
+                    <div class="alert-text custom-alert-text-margin"><strong id="nacionales">0</strong><br>No. Nacionales</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="alert-section custom-alert-sections">
+                    <div class="alert-text custom-alert-text-margin"><strong id="extranjeros">0</strong><br>No. Extranjeros</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="alert-section custom-alert-sections">
+                    <div class="alert-text custom-alert-text-margin"><strong id="primera-leng">0</strong><br>Primera lengua</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="alert-section custom-alert-sections">
+                    <div class="alert-text custom-alert-text-margin"><strong id="segunda-leng">0</strong><br>Segunda lengua</div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
     </form>
     <div class="container mt-3 d-flex full-height">
         <div class="m-auto card overflow-x-auto invisible-header invisible-thing custom-tbody"> 
@@ -245,7 +245,8 @@ $num_rows = $result->num_rows;
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-wwR5WV9OS3iUUyia0X+P8Lh7CUIUazFw3AXbsrAbwF+J8qOapEG/Nf45lYWF1LBi" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-qAYKTA5+O5/JwGnGIKrbMKAsXIbznTxDsxPE/I8BtPiw8jZch3iVOJQcdZmSpGbq" crossorigin="anonymous"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
 
 <?php
