@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM visitas";
 $result = $conn->query($sql);
 
-// Comprobar si hay resultados y mostrar en la tabla
+$num_rows = $result->num_rows;
 ?>
 
 
@@ -116,7 +116,7 @@ $result = $conn->query($sql);
           <div class="row">
             <div class="col-md-2">
               <div class="alert-section custom-alert-sections">
-                <div class="alert-text custom-alert-text-margin">Visitas</div>
+                <div class="alert-text custom-alert-text-margin"> <?php echo $num_rows; ?> Visitas</div>
               </div>
             </div>
             <div class="col-md-2">
