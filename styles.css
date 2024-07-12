@@ -1,16 +1,17 @@
-header{
+header {
     text-align: center;
     color: white;
 }
 
 .custom-text-brown {
-    color:#B79257;
+    color: #B79257;
 }
 
-.custom-text-white{
-    color:#EEEEEE;
+.custom-text-white {
+    color: #EEEEEE;
 }
-body{
+
+body {
     background-color: #1B1B1B;
     margin-left: 1rem;
     margin-top: 1rem;
@@ -29,17 +30,17 @@ body{
 
 .search-button {
     border: none;
-    background-color: #B79257;
+    background-color: #6c757d;
     color: white;
-    padding: 8px 4rem;
+    padding: 8px 16px;
     height: auto;
-    width: 100%;
+    width: auto;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .search-button:hover {
-    background-color: #B79257;
+    background-color: #5a6268;
 }
 
 .search-input {
@@ -61,21 +62,21 @@ body{
     width: 5.5rem; 
 }
 
-.custom-alert{
+.custom-alert {
     background-color: #B79257;
     border-color: #B79257;
     color: #EEEEEE;
     border-radius: 20px;
 }
 
-.custom-alert-sections{
+.custom-alert-sections {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
 }
 
-.custom-alert-text-margin{
+.custom-alert-text-margin {
     margin-top: 5px;
 }
 
@@ -89,7 +90,7 @@ body{
     background-color: #1b1b1b00;
 }
 
-.invisible-thing{
+.invisible-thing {
     background-color: #1b1b1b00;
 }
 
@@ -102,6 +103,7 @@ body{
     background-color: #2B2B2B; /* Color de fondo de las filas */
     border-bottom: 1px solid white;
 }
+
 /* Aplica fondo azul a las filas de la tabla y agrega una línea blanca entre cada dato */
 .custom-tbody td {
     background-color: transparent; /* Fondo transparente para las celdas */
@@ -115,5 +117,19 @@ body{
 
 #data-table tbody tr {
     display: table-row; /* Asegura que las filas se muestren en su estado por defecto */
-  }
-  
+}
+
+/* Estilo personalizado para los select */
+.custom-select {
+    border-radius: 20px;
+    background-color: #3F3F3F;
+    border: 1px solid #3F3F3F;
+    color: #EEEEEE;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+}
+
+.custom-select:hover {
+    background-color: #555555;
+    border-color: #555555;
+}
