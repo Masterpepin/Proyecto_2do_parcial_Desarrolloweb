@@ -57,3 +57,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('primera-leng').textContent = `${primeraLenguaMasFrecuente} (${primeraLenguaContador[primeraLenguaMasFrecuente]})`;
     document.getElementById('segunda-leng').textContent = `${segundaLenguaMasFrecuente} (${segundaLenguaContador[segundaLenguaMasFrecuente]})`;
 });
+
+document.getElementById('toggle-filters').addEventListener('click', function(event) {
+    event.preventDefault();
+    const filters = document.querySelectorAll('#filters');
+    const icon = document.getElementById('toggle-icon');
+    filters.forEach(filter => {
+        filter.classList.toggle('d-none');
+    });
+    icon.classList.toggle('rotate');
+});

@@ -17,6 +17,21 @@ body {
     margin-top: 1rem;
 }
 
+label{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: #ac7723;
+    font-style: italic;
+    
+}
+.rotate-icon {
+    transition: transform 0.3s;
+}
+
+.rotate-icon.rotate {
+    transform: rotate(180deg);
+}
 /* Personalizar border-radius para los dropdowns y el botón de búsqueda */
 .custom-dropdown-toggle, .search-button, .search-input {
     border-radius: 20px; /* Ajusta este valor según tus preferencias */
