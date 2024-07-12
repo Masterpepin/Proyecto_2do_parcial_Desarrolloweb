@@ -87,8 +87,19 @@ $sql = "SELECT
         LEFT JOIN transporte ON visitas.medio_transporte = transporte.ID
         LEFT JOIN relacion ON visitas.tipo_grupo = relacion.ID";
 
-$result = $conn->query($sql);
+$filters = [];
+foreach ($columns as $column => $table) {
+    if (isset($_POST[$column]) && !empty($_POST[$column])) {
+        $value = $conn->real_escape_string($_POST[$column]);
+        $filters[] = "$table.$column = '$value'";
+    }
+}
 
+if (!empty($filters)) {
+    $sql .= " WHERE " . implode(" AND ", $filters);
+}
+
+$result = $conn->query($sql);
 $num_rows = $result->num_rows;
 ?>
 
