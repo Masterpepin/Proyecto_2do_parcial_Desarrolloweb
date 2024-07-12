@@ -32,12 +32,10 @@ label{
 .rotate-icon.rotate {
     transform: rotate(180deg);
 }
-/* Personalizar border-radius para los dropdowns y el botón de búsqueda */
 .custom-dropdown-toggle, .search-button, .search-input {
-    border-radius: 20px; /* Ajusta este valor según tus preferencias */
+    border-radius: 20px; 
 }
 
-/* Estilo para el botón de búsqueda */
 .search-container {
     position: relative;
     display: inline-block;
@@ -77,6 +75,16 @@ label{
     width: 5.5rem; 
 }
 
+#toggle-filters {
+    color: white;
+    font-weight: bold;
+}
+#toggle-icon {
+    display: inline-block;
+    margin-left: .2rem;
+    transition: transform .3s ease;
+}
+
 .custom-alert {
     background-color: #B79257;
     border-color: #B79257;
@@ -95,7 +103,7 @@ label{
     margin-top: 5px;
 }
 
-/* Hace que el encabezado de la tabla sea invisible */
+
 .invisible-header th {
     background-color: #1b1b1b00;
     color: #B79257;
@@ -109,32 +117,31 @@ label{
     background-color: #1b1b1b00;
 }
 
-/* Elimina el borde blanco de la tabla */
 .table-custom.no-border {
     border: none;
 }
 
 .custom-tbody tr {
-    background-color: #2B2B2B; /* Color de fondo de las filas */
+    background-color: #2B2B2B;
     border-bottom: 1px solid white;
 }
 
-/* Aplica fondo azul a las filas de la tabla y agrega una línea blanca entre cada dato */
+
 .custom-tbody td {
-    background-color: transparent; /* Fondo transparente para las celdas */
+    background-color: transparent; 
 }
 
-/* Elimina cualquier borde en las celdas */
+
 .table-custom td {
     border: none;
     color: white;
 }
 
 #data-table tbody tr {
-    display: table-row; /* Asegura que las filas se muestren en su estado por defecto */
+    display: table-row; 
 }
 
-/* Estilo personalizado para los select */
+
 .custom-select {
     border-radius: 20px;
     background-color: #3F3F3F;
@@ -155,4 +162,13 @@ label{
 
 .letras-alerts{
     font-size: large;
+}
+
+.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.d-none {
+    display: none;
 }

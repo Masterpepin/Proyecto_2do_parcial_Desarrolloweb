@@ -4,15 +4,15 @@ $username = "panteras";
 $password = "root";
 $database = "panteras";
 
-// Crear conexión
+
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Verificar conexión
+
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Obtener opciones para los filtros
+
 $columns = [
   'transportes' => 'transporte',
   'relacion' => 'relacion',
@@ -24,12 +24,11 @@ $columns = [
   'estados' => 'estado',
   'medio' => 'comunicacion',
   'grado' => 'escolaridad',
-  'edad' => 'visitas' // Especial, ya que edad está en la tabla visitas
+  'edad' => 'visitas'
 ];
 
 $options = [];
 
-// Consulta SQL para obtener las opciones de cada filtro
 foreach ($columns as $column => $table) {
     $sql = "SELECT DISTINCT $column FROM $table";
     $result = $conn->query($sql);
@@ -39,12 +38,10 @@ foreach ($columns as $column => $table) {
             $options[$column][] = $row[$column];
         }
     } else {
-        // Si no hay opciones, puedes manejarlo como prefieras
         $options[$column] = [];
     }
 }
 
-// Consulta SQL para obtener datos de la tabla visitas con los nombres correspondientes
 $sql = "SELECT 
             visitas.estado,
             visitas.sexo,
